@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource('chats','ChatController');
+
 Route::get('/', function () {
   if(Auth::check()){
         $cats = DB::table('chat')->get();

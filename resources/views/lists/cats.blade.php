@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Liste des chats</div>
 
@@ -12,10 +12,12 @@
                       <thead>
                         <tr>
                           <th scope="col">Nom</th>
+                          <th scope="col">Ancien nom</th>
                           <th scope="col">Sexe</th>
                           <th scope="col">Puce</th>
                           <th scope="col">Couleur</th>
                           <th scope="col">Famille Accueil</th>
+                          <th scope="col">Photo</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -26,6 +28,7 @@
                                 }else{
                                     $sexe = "M";
                                 }
+                                $img = 'img/'.$cat['photo'];
                                 foreach ($cat_color as $catcol) {
                                   if($catcol['idChat']==$cat['id']){
                                     foreach ($colors as $color) {
@@ -44,11 +47,12 @@
                          ?>
                         <tr>
                           <td scope="col">{{ $cat['nom'] }}</td>
+                          <td scope="col">{{ $cat['ex_nom'] }}</td>
                           <td scope="col">{{ $sexe }}</td>
                           <td scope="col">{{ $cat['puce'] }}</td>
                           <td scope="col">{{ $couleur }}</td>
                           <td scope="col"><a href='{{$route}}'>{{ $familleDisplayed }}</a></td>
-
+                          <td scope="col"><img alt="Bootstrap" class="img-thumbnail" src="{{asset($img)}}" width='100px'/></td>
                         </tr>
                         <?php } ?>
 
