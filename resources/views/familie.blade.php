@@ -40,18 +40,19 @@
                   </div>
 
                                          Liste des chats<br><br>
-   <div class="form-row">
-    <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Sexe</th>
-      <th scope="col">Puce</th>
-      <th scope="col">Age</th>
-      <th scope="col">Infos</th>
-    </tr>
-  </thead>
-  <tbody>
+                   <div class="form-row">
+                    <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Sexe</th>
+                      <th scope="col">Puce</th>
+                      <th scope="col">Couleur</th>
+                      <th scope="col">Age</th>
+                      <th scope="col">Infos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
 
                   <?php
@@ -62,6 +63,15 @@
                                 }else{
                                     $sexe = "M";
                                 }
+                                foreach ($cat_color as $catcol) {
+                                  if($catcol['idChat']==$cat['id']){
+                                    foreach ($colors as $color) {
+                                      if($color['id']==$catcol['idCouleur']){
+                                       $couleur = $color['couleur'];
+                                      }
+                                    }
+                                  }
+                                }
                                 $route = '/familie/'.$familie['id'];
 
                                 ?>
@@ -69,6 +79,8 @@
                       <td scope="col">{{$cat['nom']}}</td>
                       <td scope="col">{{$sexe}}</td>
                       <td scope="col">{{$cat['puce']}}</td>
+                      <td scope="col">{{$couleur}}</td>
+
                       <td scope="col">2.5 mois</td>
                       <td scope="col"><a href='{{$route}}'><img src="http://www.sunshinecoast.evolutionsolar.com.au/wp-content/uploads/2014/12/Info.png" width="25px" /></a></td>
 

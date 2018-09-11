@@ -14,6 +14,7 @@
                           <th scope="col">Nom</th>
                           <th scope="col">Sexe</th>
                           <th scope="col">Puce</th>
+                          <th scope="col">Couleur</th>
                           <th scope="col">Famille Accueil</th>
                         </tr>
                       </thead>
@@ -24,6 +25,15 @@
                                     $sexe = "F";
                                 }else{
                                     $sexe = "M";
+                                }
+                                foreach ($cat_color as $catcol) {
+                                  if($catcol['idChat']==$cat['id']){
+                                    foreach ($colors as $color) {
+                                      if($color['id']==$catcol['idCouleur']){
+                                       $couleur = $color['couleur'];
+                                      }
+                                    }
+                                  }
                                 }
                                 foreach ($families as $familie) {
                                     if($familie['id']==$cat['id_famille']){
@@ -36,6 +46,7 @@
                           <td scope="col">{{ $cat['nom'] }}</td>
                           <td scope="col">{{ $sexe }}</td>
                           <td scope="col">{{ $cat['puce'] }}</td>
+                          <td scope="col">{{ $couleur }}</td>
                           <td scope="col"><a href='{{$route}}'>{{ $familleDisplayed }}</a></td>
 
                         </tr>
