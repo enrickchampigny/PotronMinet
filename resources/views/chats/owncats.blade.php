@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Les chats à adopter</h2>
+                <h2>Mes chats</h2>
             </div>
 
         </div>
@@ -29,31 +29,32 @@
         <tr>
             <th>Nom</th>
             <th>Ancien nom</th>
-            <th>Naissance</th>
             <th>Couleur</th>
             <th>Numero de puce</th>
             <th>Famille d'accueil</th>
+            <th width="280px">Gestion</th>
         </tr>
     @foreach ($chats as $cat)
-    <tr>
-        <td>{{ $cat->nom}}</td>
-        <td>{{ $cat->ancien_nom}}</td>
-        <td>{{ $cat->date_naissance}}</td>
-        <td>{{ $cat->couleur}}</td>
-        <td>{{ $cat->numero_puce}}</td>
-        <td>{{ $cat->famille_id}}</td>
-        <td width='30px'>
-            <a class="btn btn-info" href="{{ route('chats.show',$cat->id) }}">D</a></td><td width='30px'>
-            <a class="btn btn-primary" href="{{ route('chats.edit',$cat->id) }}">M</a></td><td width='30px'>
-            {!! Form::open(['method' => 'DELETE','route' => ['chats.destroy', $cat->id],'style'=>'display:inline']) !!}
-            {!! Form::submit('S', ['class' => 'btn btn-danger']) !!}
-            {!! Form::close() !!}</td>
+    <?php
 
+    ?>
+    <tr>
+        <td>{{ $cat['nom']}}</td>
+        <td>{{ $cat['ancien_nom']}}</td>
+        <td>{{ $cat['couleur']}}</td>
+        <td>{{ $cat['numero_puce']}}</td>
+        <td>{{ $cat['famille_id']}}</td>
+        <td>
+            <a class="btn btn-info" href="{{ route('chats.show',$cat['id']) }}">Détails</a>
+            <a class="btn btn-primary" href="{{ route('chats.edit',$cat['id']) }}">Modifier</a>
+            {!! Form::open(['method' => 'DELETE','route' => ['chats.destroy', $cat['id']],'style'=>'display:inline']) !!}
+            {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
+            {!! Form::close() !!}
+        </td>
     </tr>
     @endforeach
     </table>
 
 
-    {!! $chats->links() !!}
 </div></div>
 @endsection

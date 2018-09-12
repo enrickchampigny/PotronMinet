@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Chat;
 
 class ChatController extends Controller
@@ -15,9 +17,28 @@ class ChatController extends Controller
     public function index()
     {
         $chats = Chat::latest()->paginate(5);
-
+        if(Auth::check()){
         return view('chats.index',compact('chats'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+        }else{
+            return view('auth.login');
+        }
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function owncats()
+    {
+
+        $chats = App\Famille::find(1);
+        if(Auth::check()){
+            return view('chats.owncats',compact('chats'));
+        }else{
+            return view('auth.login');
+        }
     }
 
 
@@ -42,7 +63,11 @@ class ChatController extends Controller
     {
         request()->validate([
             'nom' => 'required',
-            'body' => 'required',
+            'ancien_nom',
+            'couleur',
+            'date_naissance',
+            'numero_puce',
+            'resume'
         ]);
 
         Chat::create($request->all());
@@ -89,7 +114,11 @@ class ChatController extends Controller
     {
         request()->validate([
             'nom' => 'required',
-            'body' => 'required',
+            'ancien_nom',
+            'couleur',
+            'date_naissance',
+            'numero_puce',
+            'resume'
         ]);
 
         Chat::find($id)->update($request->all());

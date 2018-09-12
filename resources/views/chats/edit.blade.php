@@ -1,7 +1,10 @@
-@extends('layout')
+@extends('layouts.app')
 
 
 @section('content')
+
+<div class="container">
+    <div class="row justify-content-center">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -29,6 +32,7 @@
     {!! Form::model($chat, ['method' => 'PATCH','route' => ['chats.update', $chat->id]]) !!}
         @include('chats.form')
     {!! Form::close() !!}
-
+</div>
+</div>
 
 @endsection

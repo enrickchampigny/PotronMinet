@@ -21,6 +21,21 @@
 
                     05 56 12 00 21
 
+
+
+                    <?php
+                    $cats = App\Famille::find(1)->cats;
+
+                    foreach ($cats as $cat) {
+                       echo($cat['nom']);
+                    }
+
+
+                    //$family = App\Chat::find(2)->family;
+
+                    //echo($family->nom);
+
+                    ?>
                  </div>
             </div>
         </div>
