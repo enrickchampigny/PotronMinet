@@ -4,11 +4,10 @@
 @section('content')
 
 <div class="container">
-    <div class="row justify-content-center">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Article</h2>
+                <h2>Mettre à jour le chat</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('chats.index') }}"> Back</a>
@@ -32,7 +31,6 @@
     {!! Form::model($chat, ['method' => 'PATCH','route' => ['chats.update', $chat->id]]) !!}
         @include('chats.form')
     {!! Form::close() !!}
-</div>
 </div>
 
 @endsection

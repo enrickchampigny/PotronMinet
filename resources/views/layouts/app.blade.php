@@ -32,10 +32,14 @@
                               <a class="navbar-brand" href="{{ url('/') }}">
                                Portail FA Potron-Minet
                               </a>
-
+                              <?php
+                                $id = Auth::user()->id;
+                                if($id==2){
+                              ?>
                               <a class="navbar-brand" href="{{ url('/chats') }}">
                                Les Chats
                               </a>
+                              <?php } ?>
                         @endguest
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

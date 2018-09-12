@@ -17,9 +17,14 @@ class ChatController extends Controller
     public function index()
     {
         $chats = Chat::latest()->paginate(5);
+        $id = Auth::user()->id;
         if(Auth::check()){
-        return view('chats.index',compact('chats'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            if($id ==2){
+            return view('chats.index',compact('chats'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
+            }else{
+                return view('home');
+            }
         }else{
             return view('auth.login');
         }
@@ -32,6 +37,7 @@ class ChatController extends Controller
      */
     public function owncats()
     {
+        $id = Auth::user()->id;
 
         $chats = App\Famille::find(1);
         if(Auth::check()){
@@ -49,7 +55,18 @@ class ChatController extends Controller
      */
     public function create()
     {
-        return view('chats.create');
+                $id = Auth::user()->id;
+
+         if(Auth::check()){
+            if($id ==2){
+                 return view('chats.create');
+            }else{
+                return view('home');
+            }
+        }else{
+            return view('auth.login');
+        }
+
     }
 
 
@@ -85,8 +102,15 @@ class ChatController extends Controller
      */
     public function show($id)
     {
-        $chat = Chat::find($id);
-        return view('chats.show',compact('chat'));
+
+        if(Auth::check()){
+            $chat = Chat::find($id);
+              return view('chats.show',compact('chat'));
+
+        }else{
+            return view('auth.login');
+        }
+
     }
 
 

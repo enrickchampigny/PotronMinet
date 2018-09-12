@@ -24,8 +24,8 @@
         </div>
     @endif
 
-
-    <table class="table table-bordered">
+<input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <table class="table table-bordered" id="myTable">
         <tr>
             <th>Nom</th>
             <th>Ancien nom</th>
@@ -55,5 +55,26 @@
 
 
     {!! $chats->links() !!}
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
 </div></div>
 @endsection

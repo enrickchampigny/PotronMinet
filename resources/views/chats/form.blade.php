@@ -10,6 +10,9 @@
                   </select>
                 </div>';
     });
+
+    $id = Auth::user()->id;
+
 ?>
 <div class="container">
 <div class="row">
@@ -49,6 +52,14 @@
             {!! Form::textarea('resume', null, array('id'=>'summernote', 'placeholder' => 'Ecrivez sur le chat :)','class' => 'form-control', 'style'=>'height:300px')) !!}
         </div>
     </div>
+    <?php if($id == 2){ ?>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>FA :</strong>
+            {!! Form::textarea('resume', null, array('id'=>'summernote', 'placeholder' => 'Ecrivez sur le chat :)','class' => 'form-control', 'style'=>'height:300px')) !!}
+        </div>
+    </div>
+    <?php } ?>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
     </div>
