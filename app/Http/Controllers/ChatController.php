@@ -17,7 +17,7 @@ class ChatController extends Controller
     public function index()
     {
         //$chats = App\Chat::where('famille_id', $id)->with(array('famille'))->get();
-        $chats = Chat::latest()->with(array('famille'))->paginate(5);
+        $chats = Chat::latest()->orderBy('nom')->with(array('famille'))->paginate(5);
         $id = Auth::user()->id;
         if(Auth::check()){
             if($id ==2){
@@ -41,7 +41,6 @@ class ChatController extends Controller
         $id = Auth::user()->id;
         $chats = App\Chat::where('famille_id', $id)->with(array('familles'));
         dd($chats);
-        //$chats = App\Famille::find($id);
         if(Auth::check()){
             return view('chats.owncats',compact('chats'));
         }else{

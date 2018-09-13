@@ -23,25 +23,27 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                @guest
+                @guest  <div>
                             <a class="navbar-brand" href="{{ url('/') }}">
                                 Portail FA Potron-Minet
                             </a>
-
+                         </div>
                         @else
+                        <div style="margin-right: 20px">
                               <a class="navbar-brand" href="{{ url('/') }}">
                                Portail FA Potron-Minet
-                              </a>
+                              </a></div>
                               <?php
                                 $id = Auth::user()->id;
                                 if($id==2){
                               ?>
+                            <div style="margin-right: 20px">
                               <a class="navbar-brand" href="{{ url('/chats') }}">
                                Les Chats
-                              </a>
+                              </a> </div><div style="margin-right: 20px">
                                <a class="navbar-brand" href="{{ url('/familles') }}">
                                Les FA
-                              </a>
+                              </a></div>
                               <?php } ?>
                         @endguest
 

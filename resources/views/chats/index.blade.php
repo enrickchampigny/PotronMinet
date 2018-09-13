@@ -24,7 +24,7 @@
         </div>
     @endif
 
-<input class="form-control" id="myInput" type="text" placeholder="Search..">
+<input class="form-control" id="myInput" type="text" placeholder="Search.." onkeyup="myFunction()">
     <table class="table table-bordered" id="myTable">
         <tr>
             <th>Nom</th>
