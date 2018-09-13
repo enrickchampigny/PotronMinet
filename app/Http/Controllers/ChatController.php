@@ -17,12 +17,12 @@ class ChatController extends Controller
     public function index()
     {
         //$chats = App\Chat::where('famille_id', $id)->with(array('famille'))->get();
-        $chats = Chat::latest()->orderBy('nom')->with(array('famille'))->paginate(5);
+        $chats = Chat::with(array('famille'))->orderBy('nom', 'asc')->get();
+        //dd($chats);
         $id = Auth::user()->id;
         if(Auth::check()){
             if($id ==2){
-            return view('chats.index',compact('chats'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
+            return view('chats.index',compact('chats'));
             }else{
                 return view('home');
             }
