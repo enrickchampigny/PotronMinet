@@ -9,7 +9,7 @@
                 <h2>  {{ $chat->nom}}</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('chats.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ URL::previous() }}"> Retour</a>
             </div>
         </div>
     </div>

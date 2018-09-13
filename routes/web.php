@@ -14,6 +14,7 @@
 
 
     Route::resource('chats','ChatController');
+    Route::resource('familles','FamilleController');
 
     Route::get('/', function () {
       if(Auth::check()){
@@ -37,6 +38,7 @@
       }
 
     });
+
 
     Auth::routes();
 

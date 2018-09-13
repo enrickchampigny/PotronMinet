@@ -5,13 +5,13 @@
 @section('content')
 <div class="container">
     <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('chats.create') }}"> Ajouter un chat</a>
+                <a class="btn btn-success" href="{{ route('familles.create') }}"> Ajouter une famille</a>
             </div>
     <div class="row justify-content-center">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Les chats à adopter</h2>
+                <h2>Les Familles d'accueil</h2>
             </div>
 
         </div>
@@ -28,24 +28,27 @@
     <table class="table table-bordered" id="myTable">
         <tr>
             <th>Nom</th>
-            <th>Ancien nom</th>
-            <th>Naissance</th>
-            <th>Couleur</th>
-            <th>Numero de puce</th>
-            <th>Famille d'accueil</th>
+            <th>Prenom</th>
+            <th>Adresse</th>
+            <th>CP</th>
+            <th>Ville</th>
+            <th>Telephone</th>
+            <th>Chats</th>
         </tr>
-    @foreach ($chats as $cat)
+    @foreach ($familles as $famille)
     <tr>
-        <td>{{ $cat->nom}}</td>
-        <td>{{ $cat->ancien_nom}}</td>
-        <td>{{ $cat->date_naissance}}</td>
-        <td>{{ $cat->couleur}}</td>
-        <td>{{ $cat->numero_puce}}</td>
-        <td><b><a href="{{ route('familles.show',$cat->famille_id) }}">{{ $cat->famille->nom}}</a></td>
+        <td>{{ $famille->nom}}</td>
+        <td>{{ $famille->prenom}}</td>
+        <td>{{ $famille->adresse}}</td>
+        <td>{{ $famille->cp}}</td>
+        <td>{{ $famille->ville}}</td>
+        <td>{{ $famille->telephone}}</td>
+        <td>{{ $famille->chat->count()}}</td>
+
         <td width='30px'>
-            <a class="btn btn-info" href="{{ route('chats.show',$cat->id) }}">D</a></td><td width='30px'>
-            <a class="btn btn-primary" href="{{ route('chats.edit',$cat->id) }}">M</a></td><td width='30px'>
-            {!! Form::open(['method' => 'DELETE','route' => ['chats.destroy', $cat->id],'style'=>'display:inline']) !!}
+            <a class="btn btn-info" href="{{ route('familles.show',$famille->id) }}">D</a></td><td width='30px'>
+            <a class="btn btn-primary" href="{{ route('familles.edit',$famille->id) }}">M</a></td><td width='30px'>
+            {!! Form::open(['method' => 'DELETE','route' => ['familles.destroy', $famille->id],'style'=>'display:inline']) !!}
             {!! Form::submit('S', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}</td>
 
@@ -54,7 +57,7 @@
     </table>
 
 
-    {!! $chats->links() !!}
+    {!! $familles->links() !!}
 
 <script>
 function myFunction() {

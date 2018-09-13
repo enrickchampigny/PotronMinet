@@ -22,7 +22,11 @@
                   <select class="form-control" id="famille_id" name="famille_id">';
 
           foreach ($familles as $f) {
-              $r = $r.'<option value='.$f['id'].'>'.$f['nom'].' '.$f['prenom'].' </option>';
+                if(!Request::is('*/edit') && $f['id']==2){
+                    $r = $r.'<option selected="selected" value='.$f['id'].'>'.$f['nom'].' '.$f['prenom'].' </option>';
+                }else{
+                    $r = $r.'<option value='.$f['id'].'>'.$f['nom'].' '.$f['prenom'].' </option>';
+                }
           }
 
           $r = $r.'</select> </div>';
@@ -75,7 +79,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>FA :</strong>
- {!! Form::fa(); !!}
+            {!! Form::fa(); !!}
 
          </div>
     </div>

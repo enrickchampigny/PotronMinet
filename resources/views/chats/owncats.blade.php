@@ -4,9 +4,12 @@
 
 @section('content')
 <div class="container">
+    <?php if(Auth::User()->id == 2) { ?>
     <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('chats.create') }}"> Ajouter un chat</a>
             </div>
+
+    <?php } ?>
     <div class="row justify-content-center">
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -31,7 +34,6 @@
             <th>Ancien nom</th>
             <th>Couleur</th>
             <th>Numero de puce</th>
-            <th>Famille d'accueil</th>
             <th width="280px">Gestion</th>
         </tr>
     @foreach ($chats as $cat)
@@ -43,7 +45,6 @@
         <td>{{ $cat->ancien_nom}}</td>
         <td>{{ $cat->couleur}}</td>
         <td>{{ $cat->numero_puce}}</td>
-        <td>{{ $cat->famille->nom}}<br>{{ $cat->famille->adresse}}</td>
         <td>
             <a class="btn btn-info" href="{{ route('chats.show',$cat['id']) }}">Détails</a>
             <a class="btn btn-primary" href="{{ route('chats.edit',$cat['id']) }}">Modifier</a>

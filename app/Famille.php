@@ -12,13 +12,13 @@ class Famille extends Model
      * @var array
      */
     protected $fillable = [
-        'id'
+        'id', 'nom', 'prenom', 'adresse', 'cp', 'ville', 'telephone'
     ];
 
     /**
      * Get the cats for the FA.
      */
-    public function cats()
+    public function chat()
     {
         return $this->hasMany('App\Chat');
     }

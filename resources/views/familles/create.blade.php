@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Nouveau chat</h2>
+                <h2>Nouvelle FA</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ URL::previous() }}"> Retour</a>
@@ -28,8 +28,8 @@
 </div>
 
 
-    {!! Form::open(array('route' => 'chats.store','method'=>'POST')) !!}
-         @include('chats.form')
+    {!! Form::open(array('route' => 'familles.store','method'=>'POST')) !!}
+         @include('familles.form')
     {!! Form::close() !!}
 
 

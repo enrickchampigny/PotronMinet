@@ -10,7 +10,7 @@
                 <h2>Mettre à jour le chat</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('chats.index') }}"> Retour</a>
+                <a class="btn btn-primary" href="{{ URL::previous() }}"> Retour</a>
             </div>
         </div>
     </div>

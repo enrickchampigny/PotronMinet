@@ -39,6 +39,9 @@
                               <a class="navbar-brand" href="{{ url('/chats') }}">
                                Les Chats
                               </a>
+                               <a class="navbar-brand" href="{{ url('/familles') }}">
+                               Les FA
+                              </a>
                               <?php } ?>
                         @endguest
 
