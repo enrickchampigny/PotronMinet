@@ -13,8 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-
+                    <center>
+                    <img src='/img/Association-Potron-Minet.jpg'/>
+                    </center>
+                    <br><br>
                     Depuis plus de 10 ans, l'association Potron Minet en Gironde, située à Mérignac, recueille des chats abandonnés, blessés ou malades. Nous prenons alors soin d'eux et nous les vaccinons, les tatouons et les stérilisons. Nous les sociabilisons également afin de les rendre adoptables.<br><br><br>
 
                     Vous pouvez nous rendre visite et rencontrer nos pensionnaires sur rendez-vous uniquement. Nous sommes joignables entre 14 h et 22 h (ne laissez pas de message sur le répondeur).<br><br>
@@ -24,15 +26,16 @@
 
 
                     <?php
-                    $cats = App\Famille::find(1)->cats;
+                    //$cats = App\Famille::find(1)->cats;
+                    //dd($cats);
 
-                    foreach ($cats as $cat) {
-                       echo($cat['nom']);
-                    }
+                    //foreach ($cats as $cat) {
+                       //echo($cat['nom']);
+                    //}
 
 
-                    //$family = App\Chat::find(2)->family;
-
+                    //$family = App\Chat::find(5)->famille;
+                    //dd($family);
                     //echo($family->nom);
 
                     ?>

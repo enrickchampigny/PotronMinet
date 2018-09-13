@@ -39,11 +39,11 @@
 
     ?>
     <tr>
-        <td>{{ $cat['nom']}}</td>
-        <td>{{ $cat['ancien_nom']}}</td>
-        <td>{{ $cat['couleur']}}</td>
-        <td>{{ $cat['numero_puce']}}</td>
-        <td>{{ $cat['famille_id']}}</td>
+        <td>{{ $cat->nom}}</td>
+        <td>{{ $cat->ancien_nom}}</td>
+        <td>{{ $cat->couleur}}</td>
+        <td>{{ $cat->numero_puce}}</td>
+        <td>{{ $cat->famille->nom}}<br>{{ $cat->famille->adresse}}</td>
         <td>
             <a class="btn btn-info" href="{{ route('chats.show',$cat['id']) }}">Détails</a>
             <a class="btn btn-primary" href="{{ route('chats.edit',$cat['id']) }}">Modifier</a>

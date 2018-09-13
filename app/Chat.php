@@ -18,7 +18,7 @@ class Chat extends Model
     /**
      * Get the family that takes care of the cat.
      */
-    public function family()
+    public function famille()
     {
         return $this->belongsTo('App\Famille');
     }

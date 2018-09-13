@@ -28,8 +28,10 @@
     Route::get('/mycats', function () {
       if(Auth::check()){
             $id = Auth::user()->id;
-            $cats = DB::table('chats')->where('famille_id', $id)->get();
-            return view('chats.owncats', ['chats' => json_decode(json_encode($cats), true)]);
+            //$cats = DB::table('chats')->where('famille_id', $id)->get();
+            $chats = App\Chat::where('famille_id', $id)->with(array('famille'))->get();
+        //dd($chats);
+            return view('chats.owncats', ['chats' => $chats]);
       }else{
         return view('auth.login');
       }

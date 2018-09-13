@@ -41,7 +41,7 @@
         <td>{{ $cat->date_naissance}}</td>
         <td>{{ $cat->couleur}}</td>
         <td>{{ $cat->numero_puce}}</td>
-        <td>{{ $cat->famille_id}}</td>
+        <td><b>{{ $cat->famille->nom}}</b><br>{{ $cat->famille->prenom}}</td>
         <td width='30px'>
             <a class="btn btn-info" href="{{ route('chats.show',$cat->id) }}">D</a></td><td width='30px'>
             <a class="btn btn-primary" href="{{ route('chats.edit',$cat->id) }}">M</a></td><td width='30px'>

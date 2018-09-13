@@ -16,7 +16,8 @@ class ChatController extends Controller
      */
     public function index()
     {
-        $chats = Chat::latest()->paginate(5);
+        //$chats = App\Chat::where('famille_id', $id)->with(array('famille'))->get();
+        $chats = Chat::latest()->with(array('famille'))->paginate(5);
         $id = Auth::user()->id;
         if(Auth::check()){
             if($id ==2){
@@ -38,8 +39,9 @@ class ChatController extends Controller
     public function owncats()
     {
         $id = Auth::user()->id;
-
-        $chats = App\Famille::find(1);
+        $chats = App\Chat::where('famille_id', $id)->with(array('familles'));
+        dd($chats);
+        //$chats = App\Famille::find($id);
         if(Auth::check()){
             return view('chats.owncats',compact('chats'));
         }else{
@@ -55,7 +57,7 @@ class ChatController extends Controller
      */
     public function create()
     {
-                $id = Auth::user()->id;
+        $id = Auth::user()->id;
 
          if(Auth::check()){
             if($id ==2){
@@ -122,8 +124,20 @@ class ChatController extends Controller
      */
     public function edit($id)
     {
-        $chat = Chat::find($id);
-        return view('chats.edit',compact('chat'));
+        $idUser = Auth::user()->id;
+
+        if(Auth::check()){
+
+            $chat = Chat::find($id);
+
+            if($idUser == 2 || ($chat != null && $idUser == $chat->famille_id)){
+                return view('chats.edit',compact('chat'));
+            }else{
+                return view('home');
+            }
+        }else{
+            return view('auth.login');
+        }
     }
 
 
