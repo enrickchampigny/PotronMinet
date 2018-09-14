@@ -16,11 +16,11 @@
         $familles = DB::table('familles')->get();
 
         $familles = json_decode(json_encode($familles), true);
-
+        //echo $chat->id;
+        //dd($chat);
 
           $r = '<div class="form-group">
                   <select class="form-control" id="famille_id" name="famille_id">';
-
           foreach ($familles as $f) {
                 if(!Request::is('*/edit') && $f['id']==2){
                     $r = $r.'<option selected="selected" value='.$f['id'].'>'.$f['nom'].' '.$f['prenom'].' </option>';

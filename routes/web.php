@@ -39,6 +39,19 @@
 
     });
 
+    Route::get('/moncompte', function () {
+      if(Auth::check()){
+            $id = Auth::user()->id;
+            //$cats = DB::table('chats')->where('famille_id', $id)->get();
+            //$chats = App\Chat::where('famille_id', $id)->with(array('famille'))->get();
+        //dd($chats);
+            return view('auth.passwords.reset');
+      }else{
+        return view('auth.login');
+      }
+
+    });
+
 
     Auth::routes();
 

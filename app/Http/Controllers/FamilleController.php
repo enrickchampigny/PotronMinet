@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Famille;
 use App\User;
+
 class FamilleController extends Controller
 {
      /**
@@ -70,7 +71,15 @@ class FamilleController extends Controller
             'telephone'
         ]);
 
-        Famille::create($request->all());
+        $id = Famille::create($request->all());
+        $login = strtolower(substr($request->prenom, 0, 1).$request->nom);
+        //dd($request);
+        $user = new User;
+        $user->username = $login;
+        $user->name = $request->nom;
+        $user->id = intval($id->id);
+        $user->password = bcrypt($login);
+        $user->save();
 
         return redirect()->route('familles.index')
                         ->with('success','Famille created successfully');
