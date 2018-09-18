@@ -24,4 +24,9 @@ class Chat extends Model
     {
         return $this->belongsTo('App\Famille');
     }
+
+    public function photo()
+    {
+        return $this->hasMany('App\Photo');
+    }
 }

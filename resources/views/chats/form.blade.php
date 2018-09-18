@@ -69,6 +69,8 @@
             {!! Form::text('numero_puce', null, array('placeholder' => 'Nom','class' => 'form-control')) !!}
         </div>
     </div>
+        {{Form::file('user_photo[]', array('multiple'=>true,'accept'=>'image/*'))}}
+
      <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Resume :</strong>

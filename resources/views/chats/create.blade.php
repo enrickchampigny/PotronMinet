@@ -28,7 +28,7 @@
 </div>
 
 
-    {!! Form::open(array('route' => 'chats.store','method'=>'POST')) !!}
+    {!! Form::open(array('route' => 'chats.store','method'=>'POST', 'files' => true)) !!}
          @include('chats.form')
     {!! Form::close() !!}
 

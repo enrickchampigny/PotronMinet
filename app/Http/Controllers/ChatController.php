@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 use App\Chat;
+use App\Photo;
 
 class ChatController extends Controller
 {
@@ -88,7 +91,21 @@ class ChatController extends Controller
             'resume'
         ]);
 
-        Chat::create($request->all());
+
+
+        $id = Chat::create($request->all());
+        //dd($request);
+        $photoName = time().'.'.$request->user_photo->getClientOriginalExtension();
+        $photo = new Photo;
+        $photo->chemin = '/img/'.$photoName;
+        $photo->chat_id = intval($id->id);
+        $photo->save();
+                  /*
+          talk the select file and move it public directory and make avatars
+          folder if doesn't exsit then give it that unique name.
+          */
+
+        $request->user_photo->move(public_path('img'), $photoName);
 
         return redirect()->route('chats.index')
                         ->with('success','Chat created successfully');
@@ -159,6 +176,19 @@ class ChatController extends Controller
         ]);
 
         Chat::find($id)->update($request->all());
+        $inputs = Input::all();
+        /*dd($inputs);
+        dd($request);*/
+        //dd($inputs['user_photo']);
+        foreach ($inputs['user_photo'] as $f) {
+            $photoName = time().'.'.$f->getClientOriginalExtension();
+            $photo = new Photo;
+            $photo->chemin = '/img/'.$photoName;
+            $photo->chat_id = intval($id);
+            $photo->save();
+            $f->move(public_path('img'), $photoName);
+        }
+
 
         return redirect()->route('chats.index')
                         ->with('success','Chat updated successfully');
