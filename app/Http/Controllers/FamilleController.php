@@ -17,7 +17,7 @@ class FamilleController extends Controller
      */
     public function index()
     {
-        $familles = Famille::latest()->orderBy('nom')->with(array('chat')) ->paginate(5);
+        $familles = Famille::orderBy('id', 'asc')->with(array('chat'))->get();
         $id = Auth::user()->id;
         if(Auth::check()){
             if($id ==2){

@@ -51,6 +51,20 @@
             </div>
         </div>
     </div>
+
+    <?php
+    $id = Auth::user()->id;
+    if($id == 2){ ?>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Informations confidentielles :</strong>
+                {{ $chat->info_potron}}
+
+            </div>
+        </div>
+    <?php } ?>
+
     @foreach ($chat->photo as $p)
     <?php $photoToggle = "#togglePhoto".$p->id; $toggle="togglePhoto".$p->id; ?>
     <button data-toggle="modal" data-target="{{ $photoToggle}}">

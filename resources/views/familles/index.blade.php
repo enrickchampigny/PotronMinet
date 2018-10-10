@@ -27,7 +27,7 @@
 <input class="form-control" id="myInput" type="text" placeholder="Search.." onkeyup="myFunction()">
     <table class="table table-bordered" id="myTable">
         <tr>
-            <th>Nom</th>
+            <th>ID - Nom</th>
             <th>Prenom</th>
             <th>Adresse</th>
             <th>CP</th>
@@ -37,7 +37,7 @@
         </tr>
     @foreach ($familles as $famille)
     <tr>
-        <td>{{ $famille->nom}}</td>
+        <td>{{ $famille->id}} - {{ $famille->nom}}</td>
         <td>{{ $famille->prenom}}</td>
         <td>{{ $famille->adresse}}</td>
         <td>{{ $famille->cp}}</td>
@@ -57,7 +57,6 @@
     </table>
 
 
-    {!! $familles->links() !!}
 
 <script>
 function myFunction() {

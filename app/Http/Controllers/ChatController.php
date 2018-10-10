@@ -95,17 +95,21 @@ class ChatController extends Controller
 
         $id = Chat::create($request->all());
         //dd($request);
-        $photoName = time().'.'.$request->user_photo->getClientOriginalExtension();
-        $photo = new Photo;
-        $photo->chemin = '/img/'.$photoName;
-        $photo->chat_id = intval($id->id);
-        $photo->save();
+        if($request->user_photo != null){
+            $photoName = time().'.'.$request->user_photo->getClientOriginalExtension();
+            $photo = new Photo;
+            $photo->chemin = '/img/'.$photoName;
+            $photo->chat_id = intval($id->id);
+            $photo->save();
+            $request->user_photo->move(public_path('img'), $photoName);
+
+        }
+
                   /*
           talk the select file and move it public directory and make avatars
           folder if doesn't exsit then give it that unique name.
           */
 
-        $request->user_photo->move(public_path('img'), $photoName);
 
         return redirect()->route('chats.index')
                         ->with('success','Chat created successfully');
@@ -177,17 +181,17 @@ class ChatController extends Controller
 
         Chat::find($id)->update($request->all());
         $inputs = Input::all();
-        /*dd($inputs);
-        dd($request);*/
+        //dd($inputs);
         //dd($inputs['user_photo']);
-        foreach ($inputs['user_photo'] as $f) {
+
+       /* foreach ($inputs['user_photo'] as $f) {
             $photoName = time().'.'.$f->getClientOriginalExtension();
             $photo = new Photo;
             $photo->chemin = '/img/'.$photoName;
             $photo->chat_id = intval($id);
             $photo->save();
             $f->move(public_path('img'), $photoName);
-        }
+        }*/
 
 
         return redirect()->route('chats.index')

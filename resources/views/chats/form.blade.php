@@ -77,8 +77,16 @@
             {!! Form::textarea('resume', null, array('id'=>'summernote', 'placeholder' => 'Ecrivez sur le chat :)','class' => 'form-control', 'style'=>'height:300px')) !!}
         </div>
     </div>
+
     <?php if($id == 2){ ?>
-    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Informations confidentielles :</strong>
+                {!! Form::textarea('info_potron', null, array('id'=>'summernote', 'placeholder' => 'Informations sur le chat','class' => 'form-control', 'style'=>'height:300px')) !!}
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>FA :</strong>
             {!! Form::fa(); !!}
