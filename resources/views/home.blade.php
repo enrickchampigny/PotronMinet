@@ -23,8 +23,13 @@
 
                     05 56 12 00 21
 
-
-
+                    <br><br>
+                    TODO LIST :
+                    <ul>
+                        <li>LISTE DES CHATS ARCHIVE POUR USER potron</li>
+                        <li>PHOTOS CHATS</li>
+                        <li>DETAIL CHAT : AJOUT COCHE VACCIN 1 + RAPPEL + PUCE + STERILISATION</li>
+                    </ul>
                     <?php
                     //$cats = App\Famille::find(1)->cats;
                     //dd($cats);

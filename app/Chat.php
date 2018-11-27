@@ -14,7 +14,7 @@ class Chat extends Model
      * @var array
      */
     protected $fillable = [
-        'id','nom', 'ancien_nom','couleur','numero_puce','date_naissance', 'resume','info_potron', 'famille_id', 'deleted_at'
+        'id','sexe','nom', 'ancien_nom','couleur','numero_puce','date_naissance', 'resume','info_potron', 'famille_id', 'deleted_at'
     ];
 
     /**

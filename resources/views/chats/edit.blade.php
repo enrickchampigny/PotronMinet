@@ -28,7 +28,7 @@
     @endif
 
 
-    {!! Form::model($chat, ['method' => 'PATCH','route' => ['chats.update', $chat->id],  'files' => true]) !!}
+    {!! Form::model($chat, ['method' => 'PATCH','route' => ['chats.update', $chat->id], 'files' => true]) !!}
         @include('chats.form')
     {!! Form::close() !!}
 </div>
