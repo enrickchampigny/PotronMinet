@@ -84,6 +84,7 @@ class ChatController extends Controller
     {
         request()->validate([
             'nom' => 'required',
+            'sexe',
             'ancien_nom',
             'couleur',
             'date_naissance',
@@ -172,6 +173,7 @@ class ChatController extends Controller
     {
         request()->validate([
             'nom' => 'required',
+            'sexe',
             'ancien_nom',
             'couleur',
             'date_naissance',
