@@ -15,6 +15,7 @@
 
     Route::resource('chats','ChatController');
     Route::resource('familles','FamilleController');
+    Route::resource('chatsArchived','ChatController');
 
     Route::get('/', function () {
       if(Auth::check()){
@@ -24,6 +25,22 @@
         return view('auth.login');
       }
 
+    });
+
+    Route::get('/chatsArchived', function () {
+
+            $id = Auth::user()->id;
+            $chats = App\Chat::whereNotNull('deleted_at')->onlyTrashed()->get();
+            //dd($chats);
+            if (Auth::check()) {
+                if ($id == 2) {
+                    return view('chats.archived', compact('chats'));
+                } else {
+                    return view('home');
+                }
+            } else {
+                return view('auth.login');
+            }
     });
 
     Route::get('/mycats', function () {

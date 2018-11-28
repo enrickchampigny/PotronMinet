@@ -51,6 +51,28 @@ class ChatController extends Controller
         }
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function chatsArchived()
+    {
+        $id = Auth::user()->id;
+        $chats = App\Chat::whereNotNull('deleted_at')->get();
+        //dd($chats);
+        if(Auth::check()){
+            if($id ==2) {
+                return view('chats.archived', compact('chats'));
+            }
+            else{
+                return view('home');
+            }
+        }else{
+            return view('auth.login');
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -127,7 +149,7 @@ class ChatController extends Controller
     {
 
         if(Auth::check()){
-            $chat = Chat::find($id);
+            $chat = Chat::withTrashed()->find($id);
               return view('chats.show',compact('chat'));
 
         }else{
@@ -149,7 +171,7 @@ class ChatController extends Controller
 
         if(Auth::check()){
 
-            $chat = Chat::find($id);
+            $chat = Chat::withTrashed()->find($id);
 
             if($idUser == 2 || ($chat != null && $idUser == $chat->famille_id)){
                 return view('chats.edit',compact('chat'));
@@ -181,7 +203,7 @@ class ChatController extends Controller
             'resume'
         ]);
 
-        Chat::find($id)->update($request->all());
+        Chat::withTrashed()->find($id)->update($request->all());
         $inputs = Input::all();
         //dd($inputs);
         //dd($inputs['user_photo']);

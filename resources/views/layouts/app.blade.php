@@ -43,7 +43,10 @@
                               </a> </div><div style="margin-right: 20px">
                                <a class="navbar-brand" href="{{ url('/familles') }}">
                                Les FA
-                              </a></div>
+                              </a></div><div style="margin-right: 20px">
+                                <a class="navbar-brand" href="{{ url('/chatsArchived') }}">
+                                    Chats Archivés
+                                </a></div>
                               <?php } ?>
                         @endguest
 
